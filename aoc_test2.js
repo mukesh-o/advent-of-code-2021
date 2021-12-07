@@ -1003,8 +1003,8 @@ const getStageOneAnswer = (arr) => {
   let downCounter = 0;
   let forwardCounter = 0;
 
-  for (let i = 0; i < inputDay2.length; i++) {
-    let [direction, x] = inputDay2[i].split(" ");
+  for (let i = 0; i < arr.length; i++) {
+    let [direction, x] = arr[i].split(" ");
     switch (direction) {
       case "forward": {
         forwardCounter += parseInt(x);
@@ -1027,6 +1027,43 @@ const getStageOneAnswer = (arr) => {
   return downCounter * forwardCounter;
 };
 
-const stageOneAnswer = getStageOneAnswer(inputDay2);
+const getStageTwoAnswer = (arr) => {
+  let downCounter1 = 0;
+  let forwardCounter1 = 0;
+  let aim1 = 0;
 
-console.log(stageOneAnswer);
+  for (let i = 0; i < arr.length; i++) {
+    let [direction, x] = arr[i].split(" ");
+    switch (direction) {
+      case "forward": {
+        forwardCounter1 += parseInt(x);
+        downCounter1 += aim1 !== 0 ? aim1 * parseInt(x) : aim1;
+        break;
+      }
+      case "down": {
+        aim1 += parseInt(x);
+        break;
+      }
+      case "up": {
+        aim1 -= parseInt(x);
+        break;
+      }
+      default: {
+        console.log("default", direction);
+      }
+    }
+  }
+
+  return downCounter1 * forwardCounter1;
+};
+
+const stageOneAnswer = getStageOneAnswer(inputDay2);
+const stageTwoAnswer = getStageTwoAnswer(inputDay2);
+
+console.log(
+  "stageOneAnswer",
+  stageOneAnswer,
+  "\n",
+  "stageTwoAnswer",
+  stageTwoAnswer
+);
