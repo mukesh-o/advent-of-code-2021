@@ -1,4 +1,4 @@
-const inputDay3 = `111011110101
+111011110101
 011000111010
 100000010010
 000111100110
@@ -997,31 +997,4 @@ const inputDay3 = `111011110101
 100001100110
 001110001101
 100111100101
-001101100001`.split("\n");
-
-const binaryInputLength = inputDay3.length;
-
-const getGamma = (arr) => {
-  let counterArr = new Array(arr[0].length).fill(0);
-  for (let i = 0; i < arr.length; i++) {
-    const arrayOfBinaryVal = arr[i].split("");
-    for (let j = 0; j < arrayOfBinaryVal.length; j++) {
-      counterArr[j] += parseInt(arrayOfBinaryVal[j]);
-    }
-  }
-  for (let k = 0; k < counterArr.length; k++) {
-    counterArr[k] = counterArr[k] < binaryInputLength / 2 ? 0 : 1;
-  }
-
-  return parseInt(counterArr.join("").replace(",", ""), 2);
-};
-
-const getEpsilon = (gamma) => {
-  // simply flipping the bits of gamma
-  // 12 is the leangth of each binary
-  return ~gamma & (Math.pow(2, 12) - 1);
-};
-
-const stageOneAnswer = getGamma(inputDay3) * getEpsilon(getGamma(inputDay3));
-
-console.log(stageOneAnswer);
+001101100001

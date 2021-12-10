@@ -1,4 +1,4 @@
-const inputDay1 = `199
+199
 203
 200
 201
@@ -1997,38 +1997,4 @@ const inputDay1 = `199
 2316
 2332
 2338
-2341`
-  .split("\n")
-  .map((x) => parseInt(x));
-
-const getIncrwasedCount = (arr) => {
-  let counter = 0;
-  for (let i = 0; i < arr.length; i++) {
-    if (i !== 0 && arr[i - 1] < arr[i]) {
-      counter = counter + 1;
-    }
-  }
-  return counter;
-};
-
-const getThreeMeasurement = (arr) => {
-  let threeMeasurementArr = [];
-
-  for (let i = 0; i < arr.length - 2; i++) {
-    let sum = arr[i] + arr[i + 1] + arr[i + 2];
-    threeMeasurementArr.push(sum);
-  }
-  return threeMeasurementArr;
-};
-
-const stageOneAnswer = getIncrwasedCount(inputDay1);
-
-const stageTwoAnswer = getIncrwasedCount(getThreeMeasurement(inputDay1));
-
-console.log(
-  "stageOneAnswer",
-  stageOneAnswer,
-  "\n",
-  "stageTwoAnswer",
-  stageTwoAnswer
-);
+2341
